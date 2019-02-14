@@ -20,17 +20,18 @@ namespace Example4aHOF
         // write function that takes a BmiRange and returns void 
         public static void Run(Func<string, double> read, Action<BmiRange> write)
         {
-            // input
+            // 1.input
             // multiple declarations C#3
             // using the injected function to do a Console.Read and Parse to do a double
             double weight = read("weight"),
                    height = read("height");
 
-            // computation
+            // 2.computation
             // static function and extension method on double easy to test as both pure functions
-            var bmiRange = CalculateBmi(height, weight).ToBmiRange();
+            var bmiRange = CalculateBmi(height, weight)
+                           .ToBmiRange();
 
-            // output
+            // 3.output
             // using injected function to Console.WriteLine
             write(bmiRange);
         }
