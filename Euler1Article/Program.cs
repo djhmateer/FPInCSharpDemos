@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Linq;
 using Xunit;
-using static System.Linq.Enumerable;
 
 namespace Euler1Article
 {
+
     public class Program
     {
         // If we list all the natural numbers below 10 that are multiples of 3 or 5,
@@ -16,9 +16,6 @@ namespace Euler1Article
         // Passing argument 1000 to the Run method parameter
         private static void Main() => Console.WriteLine($"Answer is: {Run(1000)}");
 
-        [Fact]
-        public void RunTest() => Assert.Equal(23, Run(10));
-
         // 1. Imperative approach. Take every n from 1..1000 and see if it is divisible by 3 or 5
         private static int Run(int n)
         {
@@ -29,14 +26,25 @@ namespace Euler1Article
             return total;
         }
 
+
+
+
+
+        // 2. Functional approach using Linq
+        // Create a Range, then pass a Lambda Expression (Anonymous Function creating a Delegate)
+        // to the Where extension method
+        // finishing with a Sum extension method
+        private static int RunLinq(int n) => 
+            Enumerable.Range(1, n - 1)
+             .Where(x => x % 3 == 0 || x % 5 == 0)
+             .Sum();
+
+
+        [Fact]
+        public void RunTest() => Assert.Equal(23, Run(10));
         [Fact]
         public void RunLinqTest() => Assert.Equal(23, RunLinq(10));
         [Fact]
         public void RunLinqTestFinal() => Assert.Equal(233168, RunLinq(1000));
-
-        // 2. Functional approach using Linq
-        // Create a range, then pass a Lambda Expression (Anonymous Function creating a Delegate) to the Where extension method
-        // finishing with a Sum extension method
-        private static int RunLinq(int n) => Range(1, n - 1).Where(x => x % 3 == 0 || x % 5 == 0).Sum();
     }
 }
