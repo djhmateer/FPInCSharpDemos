@@ -14,16 +14,18 @@ namespace Euler1Article
         // Expression body member for method
         // String interpolation to print the value
         // Passing argument 1000 to the Run method parameter
-        private static void Main() => Console.WriteLine($"Answer is: {Run(1000)}");
+        private static void Main() => Console.WriteLine($"Answer is: {Run(10)}");
 
         // 1. Imperative approach. Take every n from 1..1000 and see if it is divisible by 3 or 5
         private static int Run(int n)
         {
             int total = 0;
             for (var i = 1; i < n; i++)
+            {
                 if (i % 3 == 0 || i % 5 == 0)
                     total += i;
-            return total;
+            }
+           return total;
         }
 
 
