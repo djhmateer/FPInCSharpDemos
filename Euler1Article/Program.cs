@@ -4,15 +4,14 @@ using Xunit;
 
 namespace Euler1Article
 {
-
     public class Program
     {
         // If we list all the natural numbers below 10 that are multiples of 3 or 5,
-        // we get 3, 5, 6 and 9.The sum of these multiples is 23.
+        // we get 3, 5, 6 and 9. The sum of these multiples is 23.
         // Find the sum of all the multiples of 3 or 5 below 1000.
 
         // Expression body member C#6 for method =>
-        // String interpolation C#4? to print the value
+        // String interpolation to print the value
         // Passing argument 1000 to the Run method parameter
         private static void Main() => Console.WriteLine($"Answer is: {Run(10)}");
 
