@@ -16,7 +16,7 @@ namespace Euler1Article
         // Passing argument 1000 to the Run method parameter
         private static void Main() => Console.WriteLine($"Answer is: {Run(10)}");
 
-        // 1. Imperative approach. Take every n from 1..1000 and see if it is divisible by 3 or 5
+        // 1. Imperative approach. Take every number from 1..n-1 and see if it is divisible by 3 or 5
         private static int Run(int n)
         {
             int total = 0;
