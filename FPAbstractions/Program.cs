@@ -37,7 +37,7 @@ namespace FPAbstractions
             var resultb = GetHtml("test.com");
         }
 
-        // This is a pure function
+        // This is a pure function - input will always return the same output
         // Very easy to unit test
         static int Double(int i) => i * 2;
 
@@ -59,13 +59,13 @@ namespace FPAbstractions
 
 
 
-        // Immutability (Core part of FP!), Smart ctor
+        // Immutability (Core part of FP!), Smart constructor
         static void Two()
         {
             PersonOO dave = new PersonOO();
             dave.Name = "dave";
             dave.Age = 45;
-            // Don't do this in FP.. F# (by default), Haskell etc. does not allow this
+            // We don't do this in FP.. F# (by default), Haskell etc. does not allow this
             // Should avoid mutating objects in place and favour making new ones
             // (as can be sure no side effects anywhere else)
             dave.Age = 46;
@@ -135,7 +135,7 @@ namespace FPAbstractions
         {
             // 2 different results of the GetHtml function
             Option<string> result = None;
-            Option<string> resultb = Some("html here");
+            Option<string> resultb = "html here"; // don't need to specify Some("html here");
 
             // Forces us to deal with the None case
             // Null reference exceptions can't happen as it wont compile unless we handle it
