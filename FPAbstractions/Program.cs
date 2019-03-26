@@ -41,6 +41,20 @@ namespace FPAbstractions
         // Very easy to unit test
         static int Double(int i) => i * 2;
 
+        // Pure function - input (int) will always produce the same output (bool)
+        // as there is no shared state the function can be static
+        static bool IsPrime(int number)
+        {
+            if (number <= 1) return false;
+            if (number == 2) return true;
+            if (number % 2 == 0) return false;
+
+            for (long i = 2; i < number; i += 2)
+                if (number % i == 0)
+                    return false;
+            return true;
+        }
+
 
 
 
