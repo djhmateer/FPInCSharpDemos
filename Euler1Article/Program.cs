@@ -13,7 +13,7 @@ namespace Euler1Article
         // Expression body member C#6 for method =>
         // String interpolation to print the value
         // Passing argument 1000 to the Run method parameter
-        private static void Main() => Console.WriteLine($"Answer is: {Run(10)}");
+        private static void Main() => Console.WriteLine($"Answer is: {RunLinq(10)}");
 
         // 1. Imperative approach. Take every number from 1..n-1 and see if it is divisible by 3 or 5
         private static int Run(int n)
@@ -27,14 +27,17 @@ namespace Euler1Article
            return total;
         }
 
+
+
+
         // 2. Functional approach using Linq
         // Create a Range, then pass a Lambda Expression (Anonymous Function creating a Delegate)
         // to the Where extension method
         // finishing with a Sum extension method
         private static int RunLinq(int n) =>
-            Enumerable.Range(1, n - 1) // creates a 'list' [1,2,3..9]
-                .Where(x => x % 3 == 0 || x % 5 == 0) // [3,5,6,9]
-                .Sum(); // Sum elements
+            Enumerable.Range(1, n - 1) // creates a sequence [1,2,3..9]
+                .Where(x => x % 3 == 0 || x % 5 == 0) // if predicate returns true, keep element [3,5,6,9]
+                .Sum();
         // Extension method chaining
 
 
