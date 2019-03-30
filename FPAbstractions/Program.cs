@@ -201,7 +201,7 @@ namespace FPAbstractions
 
         static Option<string> GetHtml(string url)
         {
-            if (url == "a") return "aa";
+            if (url == "a") return Some("aa");
             if (url == "b") return "bb";
             return None;
         }
@@ -216,15 +216,18 @@ namespace FPAbstractions
             // return is not an Option<Option<string>>.. but flattened
             Option<string> name = GetFirstName()
                                  .Bind(MakeFullName);
-            Console.WriteLine(name); // Some(Joe Bloggs)
+            Console.WriteLine("test" + name); // Some(Joe Bloggs)
         }
 
-        static Option<string> GetFirstName() =>
-            Some("Joe");
+        static Option<string> GetFirstName()
+        {
+            return Some("Joe");
+        }
 
-        static Option<string> MakeFullName(string firstName) =>
-            Some($"{firstName} Bloggs");
-
+        static Option<string> MakeFullName(string firstName)
+        {
+            return Some($"{firstName} Bloggs");
+        }
 
 
         // Using Bind so we can chain multiple Option<T> functions together
@@ -247,9 +250,11 @@ namespace FPAbstractions
             string finalb = both.Match(Some: x => x, None: () => "No html returned");
         }
 
-        static Option<string> ShortenHtml(string html) =>
-            html == "" ? None :
-            Some(html.Substring(0, 10));
+        static Option<string> ShortenHtml(string html)
+        {
+            return None;
+            return html == "" ? None : Some(html.Substring(0, 10));
+        }
 
         static Option<string> PutOnHttps(string html) =>
             html.Length < 3 ? None : // business rule to catch invalid html

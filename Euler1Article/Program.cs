@@ -31,15 +31,21 @@ namespace Euler1Article
 
 
         // 2. Functional approach using Linq
-        // Create a Range, then pass a Lambda Expression (Anonymous Function creating a Delegate)
+        // Create a Range, then pass a Lambda Expression
+        // (Anonymous Function creating a Delegate)
         // to the Where extension method
         // finishing with a Sum extension method
         private static int RunLinq(int n) =>
             Enumerable.Range(1, n - 1) // creates a sequence [1,2,3..9]
-                .Where(x => x % 3 == 0 || x % 5 == 0) // if predicate (function which takes parameter(s) and returns a bool
-                                                      // returns true, keep element [3,5,6,9]
+                .Where(x => x % 3 == 0 || x % 5 == 0)
+                // if predicate (function which takes parameter(s) and returns a bool
+                // returns true, keep element [3,5,6,9]
                 .Sum();
         // LINQ Extension method chaining
+
+
+
+
 
 
         [Fact]
