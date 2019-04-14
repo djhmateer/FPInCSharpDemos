@@ -164,7 +164,7 @@ namespace FPAbstractions
             Option<string> resultb = GetValue(false).Map(name => $"Hello, {name}"); // None
         }
 
-        // Ternary nice and clean
+        // Conditional Operator (Ternary) nice and clean
         static Option<string> GetValue(bool hasValue) =>
             hasValue ? Some("Bob") : None;
 
@@ -219,15 +219,11 @@ namespace FPAbstractions
             Console.WriteLine("test" + name); // Some(Joe Bloggs)
         }
 
-        static Option<string> GetFirstName()
-        {
-            return Some("Joe");
-        }
+        static Option<string> GetFirstName() => 
+            Some("Joe");
 
-        static Option<string> MakeFullName(string firstName)
-        {
-            return Some($"{firstName} Bloggs");
-        }
+        static Option<string> MakeFullName(string firstName) => 
+            Some($"{firstName} Bloggs");
 
 
         // Using Bind so we can chain multiple Option<T> functions together
