@@ -7,10 +7,18 @@ using static LanguageExt.Prelude;
 namespace CSharp
 {
     // Useful Functional aspects of C#
+    // run from WSL -
+    // dotnet build CSharp.csproj
+    // dotnet run CSharp
     class Program
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Hello world CSharp");
+            // C# 1.0
+            // Strongly typed
+
+
             // C# 1.1
             // Conditional operator (ternary) as we aim to have everything an expression
             // rather than a sequence of statements (as they lead to more readable code)
@@ -21,6 +29,11 @@ namespace CSharp
             Option<string> GetValue(bool hasValue) => hasValue ? Some("Bob") : None;
 
             // C# 2.0 (2005)
+
+            // Generics
+            Person person = new Person();
+            List<Person> people = new List<Person> { new Person() };
+
 
             // first class functions (and closures) in the form of anonymous delegates
             // Func<T> is a predefined type for a method that returns some value of T
@@ -33,6 +46,9 @@ namespace CSharp
             var a = triple(4); // 12
 
             // C# 3.0 (2007)
+            // var keyword
+            var sentence = "The answer is 42";
+            
 
             // Lambda expressions
             Func<int, int> tripleb = x => x * 3;
@@ -60,11 +76,14 @@ namespace CSharp
             // C# 4.0 (2010)
 
             // C# 5.0 (2012)
+            // async await
 
             // C# 6.0 (2015)
             // Expression body members for method and property get
             // Import static members of a type
             // Get only auto property for immutable objects
+
+            // DotNetCore release (2016)
 
             // C# 7.0, 7.1, 7.2, 7.3 (2017..2018)
 
