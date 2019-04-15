@@ -15,25 +15,14 @@ namespace CSharp
         static void Main(string[] args)
         {
             Console.WriteLine("Hello world CSharp");
-            // C# 1.0
-            // Strongly typed
-
 
             // C# 1.1
             // Conditional operator (ternary) as we aim to have everything an expression
             // rather than a sequence of statements (as they lead to more readable code)
             var rc = GetValue(true); //Some(Bob)
 
-            // C# 7 local function feature
-            // Functional language-ext library for Option<T> (Maybe), Some, None
-            Option<string> GetValue(bool hasValue) => hasValue ? Some("Bob") : None;
-
             // C# 2.0 (2005)
-
             // Generics
-            Person person = new Person();
-            List<Person> people = new List<Person> { new Person() };
-
 
             // first class functions (and closures) in the form of anonymous delegates
             // Func<T> is a predefined type for a method that returns some value of T
@@ -48,7 +37,7 @@ namespace CSharp
             // C# 3.0 (2007)
             // var keyword
             var sentence = "The answer is 42";
-            
+
 
             // Lambda expressions
             Func<int, int> tripleb = x => x * 3;
@@ -86,13 +75,15 @@ namespace CSharp
             // DotNetCore release (2016)
 
             // C# 7.0, 7.1, 7.2, 7.3 (2017..2018)
-
             // tuples
-
             // pattern matching
 
             // C# 8
         }
+
+        // Functional language-ext library for Option<T> (Maybe), Some, None
+        // C# 6 Expression body member =>
+        static Option<string> GetValue(bool hasValue) => hasValue ? Some("Bob") : None;
 
         // Expression body syntax
         static string GetMessage() => "Hello world!";
