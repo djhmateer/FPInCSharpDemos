@@ -83,7 +83,7 @@ namespace CSharp
             // Import static members of a type
             // Get only auto property for immutable objects
 
-            // DotNetCore release (2016)
+            // DotNetCore release (2016) which can run on Linux/Mac
 
             // C# 7.0, 7.1, 7.2, 7.3 (2017..2018)
 
