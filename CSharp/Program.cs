@@ -42,6 +42,7 @@ namespace CSharp
             Func<int, int> tripleb = x => x * 3;
             var b = tripleb(4); // 12
 
+
             // Extension methods
             var name = "dave".CapitaliseFirstLetter(); // Dave
 
@@ -54,9 +55,13 @@ namespace CSharp
             // extension method chaining in LINQ
             // railway oriented
             var rd = Enumerable.Range(1, 100)
-               .Where(x => x % 20 == 0) // filter with a predicate (a function which returns a bool) here using a lambda expression so only get 20,40..
-               .OrderBy(x => -x) // sort by descending into a new sequence
-               .Select(x => $"{x}%"); // map each numerical value to a string suffixed by a % into a new sequence
+               // filter with a predicate (a function which returns a bool)
+               // here using a lambda expression so only get 20,40..
+               .Where(x => x % 20 == 0)
+               // sort by descending into a new sequence
+               .OrderBy(x => -x)
+               // map each numerical value to a string suffixed by a % into a new sequence
+               .Select(x => $"{x}%");
 
             // Select is like Map
             // SelectMany is like Bind/Flatmap
@@ -84,10 +89,12 @@ namespace CSharp
 
         // Functional language-ext library for Option<T> (Maybe), Some, None
         // C# 6 Expression body member =>
-        static Option<string> GetValue(bool hasValue) => hasValue ? Some("Bob") : None;
+        static Option<string> GetValue(bool hasValue) =>
+            hasValue ? Some("Bob") : None;
 
         // Expression body syntax
-        static string GetMessage() => "Hello world!";
+        static string GetMessage() =>
+            "Hello world!";
     }
 
     // Static classes cannot be instantiated and only allow static members

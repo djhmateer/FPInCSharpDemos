@@ -6,14 +6,16 @@ namespace Euler1Article
 {
     public class Program
     {
+        // Project Euler Problem 1
         // If we list all the natural numbers below 10 that are multiples of 3 or 5,
         // we get 3, 5, 6 and 9. The sum of these multiples is 23.
         // Find the sum of all the multiples of 3 or 5 below 1000.
 
-        // Expression body member C#6 for method =>
-        // String interpolation to print the value
-        // Passing argument 1000 to the Run method parameter
-        private static void Main() => Console.WriteLine($"Answer is: {Run(10)}");
+        private static void Main()
+        {
+            int answer = Run(10);
+            Console.WriteLine($"Answer is: {answer}");
+        }
 
         // 1. Imperative approach. Take every number from 1..n-1 and see if it is divisible by 3 or 5
         private static int Run(int n)
@@ -30,18 +32,15 @@ namespace Euler1Article
 
 
 
-        // 2. Functional approach using Linq
+        // 2. Functional approach using LINQ
         // Create a Range, then pass a Lambda Expression
-        // (Anonymous Function creating a Delegate)
-        // to the Where extension method
-        // finishing with a Sum extension method
+        // to the Where extension method then Sum extension method
         private static int RunLinq(int n) =>
             Enumerable.Range(1, n - 1) // creates a sequence [1,2,3..9]
                 .Where(x => x % 3 == 0 || x % 5 == 0)
                 // if predicate (function which takes parameter(s) and returns a bool
                 // returns true, keep element [3,5,6,9]
                 .Sum();
-        // LINQ Extension method chaining
 
 
 
