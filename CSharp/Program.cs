@@ -32,12 +32,11 @@ namespace CSharp
 
             // Func accepts an int and returns an int
             Func<int, int> triple = delegate (int x) { return x * 3; };
-            var a = triple(4); // 12
+            int a = triple(4); // 12
 
             // C# 3.0 (2007)
             // var keyword
             var sentence = "The answer is 42";
-
 
             // Lambda expressions
             Func<int, int> tripleb = x => x * 3;
@@ -50,7 +49,7 @@ namespace CSharp
             // C#'s way of doing monads
             var listOfNames = new List<string> { "Bob", "Alice", "Dave", "Dougal" };
             // Lambda expression
-            var r = listOfNames.Where(x => x.StartsWith("D")); // Dave, Dougal
+            IEnumerable<string> r = listOfNames.Where(x => x.StartsWith("D")); // Dave, Dougal
 
             // extension method chaining in LINQ
             // railway oriented
@@ -71,14 +70,16 @@ namespace CSharp
             // Expression body members for method and property get
             // Import static members of a type
             // Get only auto property for immutable objects
+            // String interpolation
 
             // DotNetCore release (2016) which can run on Linux/Mac
 
             // C# 7.0, 7.1, 7.2, 7.3 (2017..2018)
-            // tuples
+            // tuple types and tuple named elements
             // pattern matching
 
-            // C# 8
+            // C# 8 (2020?)
+            // nullable and non-nullable reference types - solve same problem as Option<T>
         }
 
         // Functional language-ext library for Option<T> (Maybe), Some, None

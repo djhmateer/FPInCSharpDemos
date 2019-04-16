@@ -70,10 +70,10 @@ namespace FPAbstractions
             // (as can be sure no side effects anywhere else)
             dave.Age = 46;
 
-            Person bob = new Person(name: "bob", age: 22);
-            //bob.Age = 23; // compiler doesn't allow this
+            Person bob = new Person(name: "bob", age: 45);
+            //bob.Age = 46; // compiler doesn't allow this
             // Creating a new version of bob with an updated age
-            var bob2 = bob.With(age: 23);
+            var bob2 = bob.With(age: 46);
             // A new version of bob with updated age 
             var bob3 = Birthday(bob);
         }
@@ -160,8 +160,8 @@ namespace FPAbstractions
             // Option is a replacement for if statements ie if obj == null
             // Working in elevated context to do logic
             // Similar to LINQ on IEnumerable.. ie if it is an empty list, then nothing will happen
-
-            Option<string> resultb = GetValue(false).Map(name => $"Hello, {name}"); // None
+            Option<string> resultb = GetValue(false)
+                           .Map(name => $"Hello, {name}"); // None
         }
 
         // Conditional Operator (Ternary) nice and clean
@@ -188,14 +188,14 @@ namespace FPAbstractions
         // Using Map (to avoid having to check for null at each stage)
         static void Seven()
         {
-            //Option<string> html = GetHtml("a");
-            Option<string> html = GetHtml("c");
-            // shorten html
+            Option<string> html = GetHtml("a"); // Some(aa)
+            //Option<string> html = GetHtml("c"); // None
+            // Shorten html
             Option<string> shortHtml = html.Map(x => x.Substring(0, 1)); // Some(a)
                                                                          // put on https
             Option<string> addedHttps = shortHtml.Map(x => $"https://{x}"); // Some(https://a)
 
-            // come down from elevated context and deal with None
+            // Come down from elevated context and deal with None
             string final = addedHttps.Match(Some: x => x, None: () => "No html returned");
         }
 
@@ -232,7 +232,7 @@ namespace FPAbstractions
             Option<string> html = GetHtml("a");
             //Option<string> html = GetHtml("c");
 
-            // we don't want to have Option<Option<string>>
+            // We don't want to have Option<Option<string>>
             Option<string> shortHtml = html.Bind(x => ShortenHtml(x)); // x is a string
 
             // put on https using shortened Method syntax so don't need x
@@ -248,12 +248,12 @@ namespace FPAbstractions
 
         static Option<string> ShortenHtml(string html)
         {
-            return None;
-            return html == "" ? None : Some(html.Substring(0, 10));
+            //return None;
+            return html == "" ? None : Some(html.Substring(0, 1));
         }
 
         static Option<string> PutOnHttps(string html) =>
-            html.Length < 3 ? None : // business rule to catch invalid html
+            //html.Length < 3 ? None : // business rule to catch invalid html
             Some("https://" + html);
 
 
@@ -263,11 +263,11 @@ namespace FPAbstractions
             IEnumerable<string> listHrefs = GetListHrefs();
             var baseUrl = "https://davemateer.com";
             // LINQ extension method style
-            // if UrlType is Invalid (ie not Absolute or Relative) then don't add to this list
+            // If UrlType is Invalid (ie not Absolute or Relative) then don't add to this list
             IEnumerable<string> finalUrl = listHrefs
-                                          // extension method which suffixes Relative, Absolute or Invalid
+                                          // Extension method which suffixes Relative, Absolute or Invalid
                                           .GetUrlTypes()
-                                          // depending on UrlType above, process the url
+                                          // Depending on UrlType above, process the url
                                           .ProcessUrls(baseUrl);
         }
 
@@ -348,8 +348,8 @@ namespace FPAbstractions
         }
 
         // Railway oriented validation
-        // a url which needs to go through a validation pipeline
-        // if it fails at any point it goes on the left track 
+        // A url which needs to go through a validation pipeline
+        // If it fails at any point it goes on the left track 
         // and wont go any further on right
         public static Either<URLRejection, string> RunUrlValidationPipeline(string url) =>
             DoesUrlStartWithHttp(url)
