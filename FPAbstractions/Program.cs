@@ -135,7 +135,7 @@ namespace FPAbstractions
         {
             // 2 different results of the GetHtml function
             Option<string> result = None;
-            Option<string> resultb = "html here"; // don't need to specify Some("html here");
+            Option<string> resultb = Some("html here"); // don't need to specify Some("html here");
 
             // Forces us to deal with the None case
             // Null reference exceptions can't happen as it wont compile unless we handle it
@@ -360,7 +360,7 @@ namespace FPAbstractions
 
         public static Either<URLRejection, string> DoesUrlStartWithHttps(string url) => url; // pass
 
-        public static Either<URLRejection, string> IsUrlInAllowedSuffixes(string url)
+        public static Either<URLRejection, String> IsUrlInAllowedSuffixes(string url)
         {
             return new URLRejection { ReasonForRejection = "Is not in allowed suffixes" };
             //return url; // hack for yes it does

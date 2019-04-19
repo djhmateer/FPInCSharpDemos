@@ -11,11 +11,8 @@ namespace Euler1Article
         // we get 3, 5, 6 and 9. The sum of these multiples is 23.
         // Find the sum of all the multiples of 3 or 5 below 1000.
 
-        private static void Main()
-        {
-            int answer = Run(10);
-            Console.WriteLine($"Answer is: {answer}");
-        }
+        private static void Main() => 
+            Console.WriteLine($"Answer is: {Run(10)}");
 
         // 1. Imperative approach. Take every number from 1..n-1 and see if it is divisible by 3 or 5
         private static int Run(int n)
@@ -41,10 +38,6 @@ namespace Euler1Article
                 // if predicate (function which takes parameter(s) and returns a bool
                 // returns true, keep element [3,5,6,9]
                 .Sum();
-
-
-
-
 
 
         [Fact]
