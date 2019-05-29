@@ -21,9 +21,11 @@ namespace Euler1Article
             for (var i = 1; i < n; i++)
             {
                 if (i % 3 == 0 || i % 5 == 0)
+                {
                     total += i;
+                }
             }
-           return total;
+            return total;
         }
 
 
@@ -36,8 +38,9 @@ namespace Euler1Article
             Enumerable.Range(1, n - 1) // creates a sequence [1,2,3..9]
                 .Where(x => x % 3 == 0 || x % 5 == 0)
                 // if predicate (function which takes parameter(s) and returns a bool
-                // returns true, keep element [3,5,6,9]
+                // returns true, keep element, so we get [3,5,6,9]
                 .Sum();
+
 
 
         [Fact]
