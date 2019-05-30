@@ -42,7 +42,6 @@ namespace Euler1Article
                 .Sum();
 
 
-
         [Fact]
         public void RunTest() => Assert.Equal(23, Run(10));
         [Fact]
